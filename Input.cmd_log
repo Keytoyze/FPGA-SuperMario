@@ -1,0 +1,2 @@
+vhdtdtfi -lib work {G:/course/Logic and Computer Design/Project/SuperMario/Input.v} -lang verilog -prj SuperMario -o Input.spl -module Input -template G:/D/ISE/ISE_DS/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family kintex7 Input.spl {G:/course/Logic and Computer Design/Project/SuperMario/Input.sym} 

@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=G:\course\Logic and Computer Design\Project\SuperMario\Top.ncd
+OUTFILE=G:\course\Logic and Computer Design\Project\SuperMario\Top.bit
+FAMILY=Kintex7
+PART=xc7k160t-1fbg676
+WORKINGDIR=G:\course\Logic and Computer Design\Project\SuperMario
+LICENSE=WebPack
+USER_INFO=__0_0_0
