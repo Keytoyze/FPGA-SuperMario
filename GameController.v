@@ -22,6 +22,7 @@ module GameController(
     input clk, 
     input clk_frame, 
     input [1:0] over, 
+    input retry, 
     input [8:0] cy, 
     input [9:0] cx, 
     input [8:0] row_addr, 
@@ -65,7 +66,7 @@ module GameController(
 
         endcase
 
-        if (over[1] & zoom_state == 2'b01) begin
+        if ((over[1] | retry) & zoom_state == 2'b01) begin
             zoom_state = 2'b10;
             // TODO: the next stage when winning
         end

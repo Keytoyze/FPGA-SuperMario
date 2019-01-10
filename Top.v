@@ -32,9 +32,9 @@ module Top(
 	wire [31:0] div;
 	clkdiv clkdiv(.clk(clk), .rst(1'b0), .clkdiv(div));
 	
-	wire left, right, jump;
+	wire left, right, jump, retry;
 	Input Input(.clk(clk), .ps2_clk(ps2_clk), .ps2_data(ps2_data), .left(left), 
-		.right(right), .jump(jump));
+		.right(right), .jump(jump), .retry(retry));
 
 	wire [8:0] row_addr;
 	wire [9:0] col_addr;
@@ -58,7 +58,7 @@ module Top(
 		.hs(hs), .vs(vs), .mask(mask), .sout(sout));
 
 	GameController Controller(.clk(clk), .clk_frame(div[17]), .over(over), .cy(cy), .cx(cx), 
-		.row_addr(row_addr), .col_addr(col_addr), .rstn(rstn), .mask(mask));
+		.row_addr(row_addr), .col_addr(col_addr), .rstn(rstn), .mask(mask), .retry(retry));
 
 endmodule
   

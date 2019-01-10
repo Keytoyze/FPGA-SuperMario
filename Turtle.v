@@ -52,22 +52,22 @@ module Turtle(
 		if (~rstn) begin
 
 			if (pre_collapsion != collapsion_impulse) begin
-				oriental = ~oriental;
 				pre_collapsion = collapsion_impulse;
+				oriental = ~oriental;
 			end
 			
 			if (pre_press != press_impulse) begin
+				pre_press = press_impulse;
 				if (shell) shell_anim = ~shell_anim;
 				else begin
 					shell = 1;
 					shell_anim = 0;
 				end
-				pre_press = press_impulse;
 			end
 			
 			if (pre_walk_anim != clk_walk_anim) begin
-				walk_state = ~walk_state;
 				pre_walk_anim = clk_walk_anim;
+				walk_state = ~walk_state;
 			end
 
 		end else begin

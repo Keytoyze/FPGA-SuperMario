@@ -19,20 +19,11 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module Input(
-	//input [2:0] btn, 
 	input clk, 
 	input ps2_clk, 
 	input ps2_data, 
-	output reg left, 
-	output reg right, 
-	output reg jump
+	output reg left, right, jump, retry
     );
-
-	// pbdebounce m1(.clk_1ms(clk_1ms), .button(~btn[0]), .pbreg(jump));
-	// pbdebounce m2(.clk_1ms(clk_1ms), .button(~btn[1]), .pbreg(left));
-	// pbdebounce m3(.clk_1ms(clk_1ms), .button(~btn[2]), .pbreg(right));
-	
-	// assign K_ROW = 1'b0;
 
 	wire [7:0] ps2_byte;
 	wire ps2_state;
@@ -54,9 +45,7 @@ module Input(
 			8'h29: jump = ps2_state;
 			8'h6b: left = ps2_state;
 			8'h74: right = ps2_state;
-			//8'he0: begin
-				//left = 1'b0; right = 1'b0;
-			//end
+			8'h2d: retry = ps2_state;
 		endcase
 		if (~&rst_ticks) rst_ticks = rst_ticks + 1'b1;
 	end
