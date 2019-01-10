@@ -24,7 +24,7 @@ module Output(
 	input [10:0] h, 
 	input [10:0] w, 
 	input [31:0] num, 
-	input [12:0] mask, 
+	input [11:0] mask, 
 	//output [3:0] AN, 
 	//output [7:0] SEGMENT, 
 	output [3:0] sout, 

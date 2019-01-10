@@ -34,8 +34,7 @@ module Mario(
 	output [10:0] w, 
 	output [10:0] max_w, 
 	output [10:0] h, 
-	output [10:0] max_h, 
-	output [6:0] state // For test
+	output [10:0] max_h
    );
 
 	parameter hero_duration_times = 64;
@@ -57,6 +56,7 @@ module Mario(
 	reg [1:0] walk_state; // 0/1/2
 	reg walk_state_increase;
 
+	wire [6:0] state;
 	assign state[6:0] = {oriental, level, walk, hero, hero_state, walk_state};
 
 	reg pre_walk_anim;
@@ -146,8 +146,8 @@ module Mario(
 		endcase
 	end
 	
-	assign max_w = level ? 45 : 40;
-	assign max_h = level ? 78 : 42;
+	assign max_w = level ? 11'd45 : 11'd40;
+	assign max_h = level ? 11'd78 : 11'd42;
 
 	Object object(
 		.id(id), 

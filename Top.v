@@ -50,7 +50,8 @@ module Top(
 	wire rstn;
 	wire [31:0] score;
 
-	wire [12:0] cx, cy;
+	wire [8:0] cy;
+	wire [9:0] cx;
 
 	World world(.clkdiv(div), .rstn(rstn), .jump(jump), .left(left), .right(right), 
 		.row_addr(row_addr), .col_addr(col_addr), .type(type), .h(h), .w(w), .over(over), 
@@ -61,7 +62,7 @@ module Top(
 		.hs(hs), .vs(vs), .mask(mask), .sout(sout));
 
 	GameController Controller(.clk(clk), .clk_frame(div[17]), .over(over), .cy(cy), .cx(cx), 
-		.row_addr(row_addr), .col_addr(col_addr), .stage(stage), .rstn(rstn), .mask(mask));
+		.row_addr(row_addr), .col_addr(col_addr), .rstn(rstn), .mask(mask));
 
 		
 	// always@(posedge div[0]) begin

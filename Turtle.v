@@ -53,6 +53,7 @@ module Turtle(
 
 			if (pre_collapsion != collapsion_impulse) begin
 				oriental = ~oriental;
+				pre_collapsion = collapsion_impulse;
 			end
 			
 			if (pre_press != press_impulse) begin
@@ -61,15 +62,13 @@ module Turtle(
 					shell = 1;
 					shell_anim = 0;
 				end
+				pre_press = press_impulse;
 			end
 			
 			if (pre_walk_anim != clk_walk_anim) begin
 				walk_state = ~walk_state;
+				pre_walk_anim = clk_walk_anim;
 			end
-			
-			pre_collapsion = collapsion_impulse;
-			pre_press = press_impulse;
-			pre_walk_anim = clk_walk_anim;
 
 		end else begin
 			walk_state = 1;

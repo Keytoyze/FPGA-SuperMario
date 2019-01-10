@@ -26,23 +26,22 @@ temple = """`timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Initial game stage.
 module StageGenerator(
-	input stage, 
 	output [12:0] mario_x, 
 	output [12:0] mario_y, 
 	output [12:0] map_width, 
-	output [13*16-1:0] goomba_x, // disable when {x, y} = 00
-	output [13*16-1:0] goomba_y, 
-	output [13*16-1:0] turtle_x, 
-	output [13*16-1:0] turtle_y, 
+	output [13*8-1:0] goomba_x, // disable when {x, y} = 00
+	output [13*8-1:0] goomba_y, 
+	output [13*8-1:0] turtle_x, 
+	output [13*8-1:0] turtle_y, 
 	output [13*64-1:0] box_x, 
 	output [13*64-1:0] box_y, 
 	output [2*64-1:0] box_state, // 0: coin, 1: pilz, 2: box, 3: stone
-	output [13*16-1:0] pipe_x, 
-	output [13*16-1:0] pipe_y, 
+	output [13*8-1:0] pipe_x, 
+	output [13*8-1:0] pipe_y, 
 	output [12:0] castle_x, 
 	output [12:0] castle_y, 
-	output [13*64-1:0] coin_x, 
-	output [13*64-1:0] coin_y
+	output [13*16-1:0] coin_x, 
+	output [13*16-1:0] coin_y
     );
 	%s
 endmodule
@@ -98,22 +97,23 @@ for s in lines:
             y -= 10
         y -= 40
     x += 40
-p+=1
-C+=1
-b+=1
-g+=1
-t+=1
-lst.append("assign pipe_x[%d:%d] = %d'd0" % (13*16-1, 13*p, (13*16 - 13*p)))
-lst.append("assign pipe_y[%d:%d] = %d'd0" % (13*16-1, 13*p, (13*16 - 13*p)))
+# p+=1
+# C+=1
+# b+=1
+# g+=1
+# t+=1
+print(p, C, b, g, t)
+lst.append("assign pipe_x[%d:%d] = %d'd0" % (13*8-1, 13*p, (13*8 - 13*p)))
+lst.append("assign pipe_y[%d:%d] = %d'd0" % (13*8-1, 13*p, (13*8 - 13*p)))
 lst.append("assign box_x[%d:%d] = %d'd0" % (13*64-1, 13*b, (13*64 - 13*b)))
 lst.append("assign box_y[%d:%d] = %d'd0" % (13*64-1, 13*b, (13*64 - 13*b)))
 lst.append("assign box_state[%d:%d] = %d'd0" % (2*64-1, 2*b, (2*64 - 2*b)))
-lst.append("assign coin_x[%d:%d] = %d'd0" % (13*64-1, 13*C, (13*64 - 13*C)))
-lst.append("assign coin_y[%d:%d] = %d'd0" % (13*64-1, 13*C, (13*64 - 13*C)))
-lst.append("assign goomba_x[%d:%d] = %d'd0" % (13*16-1,13*(g-1), (13*16 - 13*g)))
-lst.append("assign goomba_y[%d:%d] = %d'd0" % (13*16-1,13*(g-1), (13*16 - 13*g)))
-lst.append("assign turtle_x[%d:%d] = %d'd0" % (13*16-1,13*(t-1), (13*16 - 13*t)))
-lst.append("assign turtle_y[%d:%d] = %d'd0" % (13*16-1,13*(t-1), (13*16 - 13*t)))
+lst.append("assign coin_x[%d:%d] = %d'd0" % (13*16-1, 13*C, (13*16 - 13*C)))
+lst.append("assign coin_y[%d:%d] = %d'd0" % (13*16-1, 13*C, (13*16 - 13*C)))
+lst.append("assign goomba_x[%d:%d] = %d'd0" % (13*8-1,13*g, (13*8 - 13*g)))
+lst.append("assign goomba_y[%d:%d] = %d'd0" % (13*8-1,13*g, (13*8 - 13*g)))
+lst.append("assign turtle_x[%d:%d] = %d'd0" % (13*8-1,13*t, (13*8 - 13*t)))
+lst.append("assign turtle_y[%d:%d] = %d'd0" % (13*8-1,13*t, (13*8 - 13*t)))
 lst.append("assign map_width = 13'd%d" % (x + 480))
 with open("StageGenerator.v", "w") as ff:
     ff.write(temple % (";\n	".join(lst) + ";"))

@@ -39,7 +39,7 @@ module Coin(
 		if (~rstn) begin
 			
 			if (pre_flash_anim != clk_flash_anim) begin
-				shape_state = shape_state + 1;
+				shape_state = shape_state + 1'b1;
 			end
 			
          pre_flash_anim = clk_flash_anim;

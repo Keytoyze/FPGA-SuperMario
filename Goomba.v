@@ -51,15 +51,14 @@ module Goomba(
 
 			if (pre_collapsion != collapsion_impulse) begin
 				oriental = ~oriental;
+				pre_collapsion = collapsion_impulse;
 			end
 			
 			if (pre_press != press_impulse) begin
 				live = 0;
 				press_ticks = 0;
+				pre_press = press_impulse;
 			end
-
-			pre_collapsion = collapsion_impulse;
-			pre_press = press_impulse;
 
 		end else begin
 			press_ticks = 0;

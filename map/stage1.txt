@@ -16,8 +16,10 @@ M
 
 
 
+
+
 g
-b
+p
 
 g
 
@@ -35,32 +37,34 @@ t
 p   C
     C
 
-      s  C
+    s  C
+    s
+    s  c
+
+
       s
-      s  c
+      s
+      s
+      s
 
 
-        s
-        s
-        s
-        s
+      C
 
 
+p
 
-p  C
-
-t
-
-
-bb CC
+g
 
 
-b   C
+ss CC
+
+
+    C
 
 g
     c  C
 
-p   C
+p
 
 
 t
@@ -70,34 +74,32 @@ t
 .bb   b
 .b b  c  C
 .bC b b
-     bb
+.    bb
 
 
-.bb
+.bbb
 .b
-.bg  c
-.bb  b
-   bbb
-     b  C
+.bg   m
+.bb   b
+.  bbbb
+.     b  C
 
 
 .bb
 .b b
-.b  Cb
+.b  cbb  C
 .bt
-  b
-   b
-    bb  C
+. b
+.  b
+.   bbb
 
-b
 
-t
+
+p
+
+g
 
 p  C
-
-
-
-
 
 
 

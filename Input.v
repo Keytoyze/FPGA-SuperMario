@@ -25,7 +25,6 @@ module Input(
 	output left, 
 	output right, 
 	output jump
-	//TODO: output reg hero
     );
 
 	pbdebounce m1(.clk_1ms(clk_1ms), .button(~btn[0]), .pbreg(jump));

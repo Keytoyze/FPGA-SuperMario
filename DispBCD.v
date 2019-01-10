@@ -24,7 +24,6 @@ module DispBCD(
 	output [3:0] sout
    );
 
-	wire [3:0] sout;
 	wire [39:0] bcd;
 
    Seg7Device segDevice(.clkIO(clkdiv[3]), .clkScan(clkdiv[15:14]), .clkBlink(clkdiv[25]),
