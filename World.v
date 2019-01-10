@@ -411,7 +411,7 @@ module World(
 			w = x % 40;
 			type = 13;
 		end else if (inBox(x, y, castle_x, castle_y, 479, 360)) begin // Castle
-			h = y - castle_y + 359;
+			h = y - castle_y + 11'd359;
 			w = x - castle_x;
 			type = 25;
 		end else begin // Goombar
@@ -429,7 +429,7 @@ module World(
 				end else begin // Box
 					temp_index = getBoxIndex(x, y);
 					if (temp_index < N2) begin
-						h = y + 39 - b_y[temp_index];
+						h = y + 11'd39 - b_y[temp_index];
 						w = x - b_x[temp_index];
 						if (b_state[temp_index][1]) begin
 							type = b_state[temp_index][0] ? 6'd8 : 6'd1;

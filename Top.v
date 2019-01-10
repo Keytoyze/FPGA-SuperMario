@@ -20,10 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 module Top(
 	input clk, 
-	input [2:0] btn, 
-	output K_ROW, 
-	//output [3:0] AN, 
-	//output [7:0] SEGMENT, 
+	input ps2_clk, 
+	input ps2_data, 
 	output [3:0] sout, 
 	output [3:0] r, 
 	output [3:0] g, 
@@ -32,11 +30,11 @@ module Top(
     );
 
 	wire [31:0] div;
-	clkdiv m1(.clk(clk), .rst(1'b0), .clkdiv(div));
+	clkdiv clkdiv(.clk(clk), .rst(1'b0), .clkdiv(div));
 	
 	wire left, right, jump;
-	Input Input(.btn(btn), .clk_1ms(div[17]), .left(left), .right(right), .jump(jump), 
-		.K_ROW(K_ROW));
+	Input Input(.clk(clk), .ps2_clk(ps2_clk), .ps2_data(ps2_data), .left(left), 
+		.right(right), .jump(jump));
 
 	wire [8:0] row_addr;
 	wire [9:0] col_addr;
@@ -45,34 +43,22 @@ module Top(
 	wire [10:0] w; 
 	wire [1:0] over;
 	wire [11:0] mask;
-	wire stage;
-	reg [2:0] init = 0;
 	wire rstn;
 	wire [31:0] score;
 
 	wire [8:0] cy;
 	wire [9:0] cx;
 
-	World world(.clkdiv(div), .rstn(rstn), .jump(jump), .left(left), .right(right), 
+	World World(.clkdiv(div), .rstn(rstn), .jump(jump), .left(left), .right(right), 
 		.row_addr(row_addr), .col_addr(col_addr), .type(type), .h(h), .w(w), .over(over), 
 		.cx(cx), .cy(cy), .score(score));
 	
-	Output Output(.clkdiv(div), .type(type), .h(h), .w(w), .num(score), //.AN(AN), .SEGMENT(SEGMENT), 
+	Output Output(.clkdiv(div), .type(type), .h(h), .w(w), .num(score), 
 	.row_addr(row_addr), .col_addr(col_addr), .r(r), .g(g), .b(b), 
 		.hs(hs), .vs(vs), .mask(mask), .sout(sout));
 
 	GameController Controller(.clk(clk), .clk_frame(div[17]), .over(over), .cy(cy), .cx(cx), 
 		.row_addr(row_addr), .col_addr(col_addr), .rstn(rstn), .mask(mask));
-
-		
-	// always@(posedge div[0]) begin
-	// 	if (~&init) begin
-	// 		rstn = 1'b1;
-	// 		init = init + 1'b1;
-	// 	end else begin
-	// 		rstn = 1'b0;
-	// 	end
-	// end
 
 endmodule
   
