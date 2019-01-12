@@ -4,15 +4,15 @@
 // Company: 
 // Engineer:
 //
-// Create Date:   01:02:24 12/27/2018
-// Design Name:   Mario
-// Module Name:   G:/course/Logic and Computer Design/Project/SuperMario/test_mario.v
+// Create Date:   22:27:46 01/12/2019
+// Design Name:   Turtle
+// Module Name:   G:/course/Logic and Computer Design/Project/SuperMario/test_turtle.v
 // Project Name:  SuperMario
 // Target Device:  
 // Tool versions:  
 // Description: 
 //
-// Verilog Test Fixture created by ISE for module: Mario
+// Verilog Test Fixture created by ISE for module: Turtle
 //
 // Dependencies:
 // 
@@ -22,97 +22,79 @@
 // 
 ////////////////////////////////////////////////////////////////////////////////
 
-module test_mario;
+module test_turtle;
 
 	// Inputs
 	reg clk;
 	reg clk_walk_anim;
-	reg clk_hero_anim;
 	reg rstn;
-	reg left;
-	reg right;
-	reg jump;
-	reg level;
-	reg hero;
+	reg initial_show;
+	reg collapsion_impulse;
+	reg press_impulse;
 
 	// Outputs
 	wire [5:0] id;
+	wire oriental;
 	wire [10:0] w;
 	wire [10:0] h;
+	wire shell;
+	wire shell_anim;
 
 	// Instantiate the Unit Under Test (UUT)
-	Mario uut (
+	Turtle uut (
 		.clk(clk), 
 		.clk_walk_anim(clk_walk_anim), 
-		.clk_hero_anim(clk_hero_anim), 
 		.rstn(rstn), 
-		.left(left), 
-		.right(right), 
-		.jump(jump), 
-		.level(level), 
-		.hero(hero), 
+		.initial_show(initial_show), 
+		.collapsion_impulse(collapsion_impulse), 
+		.press_impulse(press_impulse), 
 		.id(id), 
+		.oriental(oriental), 
 		.w(w), 
-		.h(h)
+		.h(h), 
+		.shell(shell), 
+		.shell_anim(shell_anim)
 	);
 
 	initial begin
 		// Initialize Inputs
+		clk = 0;
+		clk_walk_anim = 0;
 		rstn = 1;
-		left = 0;
-		right = 0;
-		jump = 0;
-		level = 0;
-		hero = 0;
-		
-		#4;
-		rstn = 0;
-		#20;
-		
-		left = 1;
-		#20;
-		
-		right = 1;
-		#20;
-		
-		left = 0;
-		#20;
-		
-		right = 0;
-		#50;
-		
-		jump = 1;
-		#20;
-		
-		jump = 0;
-		
-		#20;
-		level = 1;
-		#20;
-		hero = 1;
-		#20;
-		level = 0;
+		initial_show = 1;
+		collapsion_impulse = 0;
+		press_impulse = 0;
 
-		#100;
+		// Wait 100 ns for global reset to finish
+		#10;
+		rstn = 0;
+		#50;
+		collapsion_impulse = 1;
+		#50;
+		collapsion_impulse = 0;
+		#50;
+		press_impulse = 1;
+		#50;
+		press_impulse = 0;
+		#50;
+		press_impulse = 1;
         
 		// Add stimulus here
 
 	end
-
+	
 	always begin
 		clk_walk_anim = 0;
-		clk_hero_anim = 0;
 		clk = 0;
 		#2;
 		clk = 1;
 		#2;
 		clk_walk_anim = 1;
-		clk_hero_anim = 1;
 		clk = 0;
 		#2;
 		clk = 1;
 		#2;
 	end
-  
+      
 endmodule
 
