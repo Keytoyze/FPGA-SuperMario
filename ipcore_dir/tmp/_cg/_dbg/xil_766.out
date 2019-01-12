@@ -31,7 +31,7 @@ SET_PARAMETER enable_a Always_Enabled
 SET_PARAMETER enable_b Always_Enabled
 SET_PARAMETER port_a_enable_rate 100
 SET_PARAMETER use_axi_id false
-SET_PARAMETER write_depth_a 65536
+SET_PARAMETER write_depth_a 262253
 SET_PARAMETER algorithm Minimum_Area
 SET_PARAMETER use_bram_block Stand_Alone
 SET_PARAMETER output_reset_value_a 0
@@ -41,10 +41,10 @@ SET_PARAMETER port_b_write_rate 50
 SET_PARAMETER ecctype No_ECC
 SET_PARAMETER write_width_a 12
 SET_PARAMETER write_width_b 12
-SET_PARAMETER component_name Test
+SET_PARAMETER component_name Image
 SET_PARAMETER reset_priority_a CE
 SET_PARAMETER reset_priority_b CE
-SET_PARAMETER operating_mode_a WRITE_FIRST
+SET_PARAMETER operating_mode_a NO_CHANGE
 SET_PARAMETER additional_inputs_for_power_estimation false
 SET_PARAMETER operating_mode_b WRITE_FIRST
 SET_PARAMETER interface_type Native
@@ -53,7 +53,7 @@ SET_PARAMETER reset_type SYNC
 SET_PARAMETER register_portb_output_of_memory_primitives false
 SET_PARAMETER use_rsta_pin false
 SET_PARAMETER port_b_enable_rate 100
-SET_PARAMETER coe_file ./text.coe
+SET_PARAMETER coe_file ./Image.coe
 SET_PARAMETER fill_remaining_memory_locations false
 SET_PARAMETER axi_slave_type Memory_Slave
 SET_PARAMETER axi_type AXI4_Full

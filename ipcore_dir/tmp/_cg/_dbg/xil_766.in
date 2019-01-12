@@ -23,7 +23,7 @@ SET_PREFERENCE implementationfiletype Ngc
 SET_PREFERENCE foundationsym false
 SET_PREFERENCE createndf false
 SET_PREFERENCE removerpms false
-SET_PARAMETER Component_Name Test
+SET_PARAMETER Component_Name Image
 SET_PARAMETER Interface_Type Native
 SET_PARAMETER AXI_Type AXI4_Full
 SET_PARAMETER AXI_Slave_Type Memory_Slave
@@ -42,9 +42,9 @@ SET_PARAMETER Algorithm Minimum_Area
 SET_PARAMETER Primitive 8kx2
 SET_PARAMETER Assume_Synchronous_Clk false
 SET_PARAMETER Write_Width_A 12
-SET_PARAMETER Write_Depth_A 65536
+SET_PARAMETER Write_Depth_A 262253
 SET_PARAMETER Read_Width_A 12
-SET_PARAMETER Operating_Mode_A WRITE_FIRST
+SET_PARAMETER Operating_Mode_A NO_CHANGE
 SET_PARAMETER Enable_A Always_Enabled
 SET_PARAMETER Write_Width_B 12
 SET_PARAMETER Read_Width_B 12
@@ -60,7 +60,7 @@ SET_PARAMETER register_porta_input_of_softecc false
 SET_PARAMETER register_portb_output_of_softecc false
 SET_PARAMETER Pipeline_Stages 0
 SET_PARAMETER Load_Init_File true
-SET_PARAMETER Coe_File ./text.coe
+SET_PARAMETER Coe_File ./Image.coe
 SET_PARAMETER Fill_Remaining_Memory_Locations false
 SET_PARAMETER Remaining_Memory_Locations 0
 SET_PARAMETER Use_RSTA_Pin false
